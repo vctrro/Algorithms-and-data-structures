@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class PlusOne {
 
     public static int[] plusOne(int[] digits) {
-
+        digits[digits.length-1]++;
+        return digits;
     }
 
     public static void main(String[] args) {
