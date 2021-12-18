@@ -7,11 +7,32 @@ public class PivotIndex {
 
     public static int pivotIndex(int[] nums) {
         int pivot = -1;
+        int numsLength = nums.length;
+
+        for (int pivot_x = 0; pivot_x < numsLength; pivot_x++){
+            int sumLeft = 0;
+            int sumRight = 0;
+
+            if (pivot_x > 0)
+                for (int i = 0; i < pivot_x; i++) sumLeft += nums[i];
+            if (pivot_x < numsLength-1)
+                for (int i = pivot_x+1; i < numsLength; i++) sumRight += nums[i];
+
+            System.out.println(pivot_x + "\t" + sumLeft + "\t" + sumRight);
+            if (sumLeft == sumRight){
+                pivot = pivot_x;
+                break;
+            }
+        }
 
         return pivot;
     }
 
     public static void main(String[] args) {
-        System.out.println(pivotIndex(new int[]{1, 24, 74, 8, 3, 6, 4}));
+        System.out.println(pivotIndex(new int[]{1, 24, 4, 8, 3, 6, 8}));
+        System.out.println();
+        System.out.println(pivotIndex(new int[]{-1, -24, -4, 8, 15, 6, 8}));
+        System.out.println();
+        System.out.println(pivotIndex(new int[]{8, -24, -4, 8, 15, 6, -1}));
     }
 }
